@@ -1,0 +1,14 @@
+<table class="table table-striped" *ngIf="repositories">
+  <tr>
+    <th>Repository name</th>
+    <th>Language</th>
+    <th>Link</th>
+  </tr>
+  <tr *ngFor="let repo of repositories | paginate: { itemsPerPage: itemPerPage, currentPage: p, totalItems: reposCount }">
+    <td>{{repo.name}} </td>
+    <td>{{repo.language}} </td>
+    <td><a target="_blank" href="{{repo.clone_url}}">Open</a></td>
+  </tr>
+</table>
+
+<pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>

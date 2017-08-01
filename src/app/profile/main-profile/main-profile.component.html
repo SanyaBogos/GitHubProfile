@@ -1,0 +1,22 @@
+<div *ngIf="!user;then greetings else userInfo">
+  you should never see it ...
+</div>
+
+<ng-template #greetings>
+  <label class="text-center">
+    <strong> Let`s search user using filter on top right side</strong>
+  </label>
+</ng-template>
+<ng-template #userInfo>
+  <div class="row">
+    <img class="col-4" [src]="user.avatar_url" class="picture-size">
+    <label class="col-4"><strong>{{user.login}}</strong> </label>
+    <label class="col-4"><strong>{{user.bio}}</strong> </label>
+    <label class="col-4"><strong>{{user.repos_url}}</strong> </label>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-repositories-table [userLogin]="user.login"></app-repositories-table>
+    </div>
+  </div>
+</ng-template>
